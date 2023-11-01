@@ -29,7 +29,7 @@ export function GeoChart() {
       ]}
       chartType="GeoChart"
       width="100%"
-      height="250px"
+      height="220px"
       data={data}
     />
   );

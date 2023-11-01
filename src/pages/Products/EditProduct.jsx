@@ -19,12 +19,11 @@ const EditProduct = ({ fid, closeEvent }) => {
   const empCollectionRef = collection(db, "products");
   const setRows = useAppStore((state) => state.setRows);
 
-  useEffect(()=>{
-    console.log("FId:" + fid.id);
+  useEffect(() => {
     setName(fid.name);
     setPrice(fid.price);
     setCategory(fid.category);
-  },[])
+  }, []);
 
   const currencies = [
     {
@@ -63,14 +62,14 @@ const EditProduct = ({ fid, closeEvent }) => {
     setCategory(e.target.value);
   };
   const createUser = async () => {
-  const userDoc = doc(db,"products",fid.id);
-  const newfields = {
-    name : name,
-    price : Number(price),
-    category: category,
-    date : String(new Date()),
-  };
-  await updateDoc(userDoc,newfields);
+    const userDoc = doc(db, "products", fid.id);
+    const newfields = {
+      name: name,
+      price: Number(price),
+      category: category,
+      date: String(new Date()),
+    };
+    await updateDoc(userDoc, newfields);
     getUsers();
     closeEvent();
     Swal.fire("Submitted!", "Your file has been submitted.", "success");
